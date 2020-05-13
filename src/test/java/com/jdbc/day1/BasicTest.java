@@ -27,8 +27,37 @@ public class BasicTest {
 //                System.out.println(resultSet.getString("salary"));
 //            }
 
-            DatabaseMetaData databaseMetaDat=connection.getMetaData();
+            DatabaseMetaData databaseMetaData=connection.getMetaData();
             ResultSetMetaData resultSetMetaData=resultSet.getMetaData();
+
+
+            System.out.println("JDBC driver: " + databaseMetaData.getDriverName());
+            System.out.println("JDBC driver version: " + databaseMetaData.getDriverVersion());
+            System.out.println("Database name: " + databaseMetaData.getDatabaseProductName());
+            System.out.println("Database version: " + databaseMetaData.getDatabaseProductVersion());
+
+            System.out.println("Number of columns: " + resultSetMetaData.getColumnCount());
+            System.out.println("Label of 1st column: " + resultSetMetaData.getColumnName(1));
+            System.out.println("Data type of first column: " + resultSetMetaData.getColumnTypeName(1));
+
+            System.out.println("################");
+            //this loop will loop though columns
+            for (int columnIndex = 1; columnIndex <= resultSetMetaData.getColumnCount(); columnIndex++) {
+                System.out.printf("%-15s", resultSetMetaData.getColumnName(columnIndex));
+            }
+
+            System.out.println("");
+
+            //iterate rows
+            while (resultSet.next()) {
+                //iterate columns
+                for (int columnIndex = 1; columnIndex <= resultSetMetaData.getColumnCount(); columnIndex++) {
+                    System.out.printf("%-15s", resultSet.getString(columnIndex));
+                }
+                System.out.println("");
+            }
+
+
 
 
             resultSet.close();
