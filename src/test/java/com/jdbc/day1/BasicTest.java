@@ -5,13 +5,14 @@ import java.sql.*;
 public class BasicTest {
 
     public static void main(String[] args) {
-        String URL = "jdbc:oracle:thin:@54.146.199.178:1521:xe";
+        String URL = "jdbc:oracle:thin:@54.162.14.46:1521:xe";
         String username = "hr";
         String password = "hr";
         try {
             Connection connection = DriverManager.getConnection(URL, username, password);
             Statement statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
             ResultSet resultSet = statement.executeQuery("SELECT * FROM employees");
+
             while (resultSet.next()) {
                 //System.out.println(resultSet.getString(2));
 
@@ -41,6 +42,7 @@ public class BasicTest {
             System.out.println("Data type of first column: " + resultSetMetaData.getColumnTypeName(1));
 
             System.out.println("################");
+
             //this loop will loop though columns
             for (int columnIndex = 1; columnIndex <= resultSetMetaData.getColumnCount(); columnIndex++) {
                 System.out.printf("%-15s", resultSetMetaData.getColumnName(columnIndex));
