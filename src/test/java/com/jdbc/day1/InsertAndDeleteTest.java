@@ -21,11 +21,6 @@ public class InsertAndDeleteTest {
 
 
 
-
-
-
-
-
             resultSet.close();
             statement.close();
             connection.close();
