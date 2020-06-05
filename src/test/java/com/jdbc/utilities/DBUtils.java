@@ -13,13 +13,14 @@ public class DBUtils {
     private static ResultSet resultSet;
 
     public static void createConnection() {
-        String dbUrl = "jdbc:oracle:thin:@3.90.175.72:1521:xe";
+        String dbUrl = "jdbc:oracle:thin:@54.152.21.73:1521:xe";
         String dbUsername = "hr";
         String dbPassword = "hr";
         try {
             connection = DriverManager.getConnection(dbUrl, dbUsername, dbPassword);
         } catch (SQLException e) {
             e.printStackTrace();
+            throw  new RuntimeException("Failed to connect with database");
         }
     }
 
@@ -29,6 +30,7 @@ public class DBUtils {
         } catch (SQLException e) {
             // TODO Auto-generated catch block
             e.printStackTrace();
+            throw  new RuntimeException("Failed to connect with database");
         }
     }
 

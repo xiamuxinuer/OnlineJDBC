@@ -34,28 +34,22 @@ public class DatabaseTest {
 
         //Assert.assertTrue(resultSet.getMetaData().getColumnCount()==11);
 
-
+        //get 5th employee name
+        System.out.println(employeesName.get(4));
+        //get name of employee that id==100
+        System.out.println(idAndNamePair.get(100));
 
 
         resultSet.close();
         statement.close();
         connection.close();
 
-
-
-
     }
 
-
-
-
-
-
-
-
-
-
-
-
-
 }
+
+
+
+
+
+
