@@ -1,5 +1,6 @@
 package com.jdbc.day3;
 
+import com.jdbc.utilities.DBUtils;
 import org.junit.Test;
 
 import java.sql.*;
@@ -105,7 +106,11 @@ public class JDBCPractice {
         }
     }
     @Test
-    public void dbUtilitiesTest() {
+    public void dbUtilitiesTest(String query) {
+        DBUtils.createConnection(DB_URL,DB_USER,DB_PASSWORD);
+        System.out.println(DBUtils.getQueryResultMap(query));
+
+        DBUtils.destroy();
 
 
 

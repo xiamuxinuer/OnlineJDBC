@@ -193,6 +193,31 @@ public class DBUtils {
         int rowCount = resultSet.getRow();
         return rowCount;
     }
+
+
+    /**
+     * /**
+     * Executes the given SQL statement, which may be an <code>INSERT</code>,
+     * <code>UPDATE</code>, or <code>DELETE</code> statement or an
+     * SQL statement that returns nothing, such as an SQL DDL statement.
+     *
+     * @param query
+     * @return either (1) the row count for SQL Data Manipulation Language (DML) statements
+     * *      *         or (2) 0 for SQL statements that return nothing
+     */
+    public static int executeUpdate(String query) {
+        try {
+            statement = connection.createStatement(ResultSet.TYPE_SCROLL_INSENSITIVE, ResultSet.CONCUR_READ_ONLY);
+            return statement.executeUpdate(query);
+        } catch (SQLException e) {
+            e.printStackTrace();
+            throw new RuntimeException("Failed to execute update operation!");
+        }
+    }
+
+
+
+
 }
 
 
